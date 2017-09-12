@@ -1,0 +1,20 @@
+import reducer from './reducers';
+/**
+ * Actions & Sagas should be imported as mentioned below.
+ * Please change the naming conventions as per your module.
+ */
+import * as authActions from './actions';
+import * as authSagas from './saga';
+
+/**
+ * Actions & Sagas should be exported as mentioned below.
+ * Please change the naming conventions as per your module.
+ */
+export {
+    authActions,
+    authSagas
+};
+/**
+ * By default only reducer should be exported.
+ */
+export default reducer;

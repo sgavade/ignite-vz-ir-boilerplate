@@ -1,0 +1,30 @@
+import { put, takeLatest } from 'redux-saga/effects';
+import * as types from './types';
+import * as Api from './api';
+
+/**
+ * Define sagas as mentioned in below code.
+ */
+/**
+ * Task to launch Authenticate User api.
+ * @param {String} action
+ * @param {String} username
+ * @param {String} password
+ */
+function* authenticateUser(action) {
+    let payload = yield Api.authenticateUser(action.username, action.password);
+    yield put({type: types.AUTHENTICATING_USER_SUCCESS, payload});
+
+}
+
+/**
+ *
+ * Saga watcher to spawn new authenticate task.
+ * It will always launch latest authentication task.
+ * @param {String} action
+ */
+const watchAuthenticateUser = function* watchAuthenticateUser () {
+    yield takeLatest(types.AUTHENTICATING_USER, authenticateUser)
+}
+
+export {watchAuthenticateUser};

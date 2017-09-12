@@ -1,0 +1,53 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import RootComponent from './component';
+
+/**
+ * Root container of your module that will map all the properties to the state.
+ */
+class RootContainerComponent extends Component {
+
+    /**
+     * Define any navigation screen title here, else remove below code.
+     */
+    static navigationOptions = {
+		    title: '',
+	  };
+
+    /**
+     * Initialize any properties here.
+     * @param {*} props 
+     */
+    constructor(props) {
+        super(props);
+    }
+
+    /**
+     * Render root component and pass down properties to its child component
+     */
+    render() {
+        return (
+            <RootComponent />
+        );
+
+    }
+}
+
+/**
+ * Map state object into properties of components.
+ * @param {* State} state object in store.
+ */
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+/**
+ * Map dispatch function actions to properties.
+ * @param {*function} dispatch 
+ */
+const mapDispatchToProps = (dispatch) => ({
+})
+
+const RootContainer = connect(mapStateToProps, mapDispatchToProps)(RootContainerComponent);
+export default RootContainer

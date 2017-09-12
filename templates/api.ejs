@@ -1,0 +1,17 @@
+import { NativeModules } from 'react-native';
+
+/**
+ * Define your api as functions.
+ * It invokes native bridge to perform a task.
+ */
+
+ // See below code for your reference.
+
+const authenticateUser = async (username, password) => {
+	const authModule = NativeModules.AuthNetworkAPIModule;
+	console.log("Auth Module " + authModule);
+	let authResponse = await authModule.authenticateUser(username, password);
+	return authResponse;
+}
+
+export {authenticateUser}

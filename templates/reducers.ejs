@@ -1,0 +1,50 @@
+import * as types from './types';
+import { combineReducers } from 'redux';
+
+/**
+ * Define your initial state here..
+ */
+const initialState = {
+
+}
+
+/**
+ * Create reducer as below mentioned code.
+ * Please update the below mentioned code as per your module.
+ */
+/**
+ * Reducer to handle user actions.
+ * @param {*State} state
+ * @param {*Action} action
+ */
+const authReducer = (state = initialState, action) => {
+    const authenticate = state.authenticateUser;
+    switch(action.type) {
+        case types.AUTHENTICATING_USER:
+            return {
+                ...authenticate,
+                isFetching:true,
+            }
+        case types.AUTHENTICATING_USER_SUCCESS:
+            return {
+                ...authenticate,
+                isFetching:false,
+                isAuthenticated:true,
+                profile: {
+                    token:action.payload[0],
+                    cdnImgUrl:action.payload[1],
+                    profileId:action.payload[2]
+                },
+            }
+        case types.AUTHENTICATING_USER_FAILURE:
+            return {
+                ...authenticate,
+                ...initialState,
+                error:action.payload
+            }
+        default:
+            return state;
+    }
+}
+
+export default authReducer;
